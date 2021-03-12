@@ -27,7 +27,8 @@ const Index = ({ children, location, i18nMessages }) => {
         const { langs, defaultLangKey } = data.site.siteMetadata.languages;
         const langKey = getCurrentLangKey(langs, defaultLangKey, url);
         const homeLink = `/${langKey}/`.replace(`/${defaultLangKey}/`, '/');
-        const langsMenu = getLangs(langs, langKey, getUrlForLang(homeLink, url)).map((item) => ({ ...item, link: item.link.replace(`/${defaultLangKey}/`, '/') }));
+        const langsMenu = getLangs(langs, langKey, getUrlForLang(homeLink, url))
+          .map((item) => ({ ...item, link: item.link.replace(`/${defaultLangKey}/`, '/') }));
         return (
           <IntlProvider
             locale={langKey}

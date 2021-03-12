@@ -11,4 +11,5 @@ module.exports = {
   questionaries: 'Опросные листы',
   contacts: 'Контакты',
   about: 'О нас',
+  'news.seeMore': 'Больше новостей',
 };
