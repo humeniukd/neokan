@@ -56,21 +56,20 @@ module.exports = {
           postPage: 'src/templates/blog-post.js',
           query: `
           {
-              allMarkdownRemark {
-                  edges {
-                  node {
-                      fields {
-                      slug,
-                      langKey
-                      }
+            allMarkdownRemark {
+              edges {
+                node {
+                  fields {
+                    slug,
+                    langKey
                   }
-                  }
+                }
               }
+            }
           }
           `
         }
       }
     },
-    'gatsby-plugin-styled-components'
   ],
 }

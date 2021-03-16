@@ -11,4 +11,5 @@ module.exports = {
   questionaries: 'Опитувальні листи',
   contacts: 'Контакти',
   about: 'Про нас',
+  posts: 'Публікації',
 };
