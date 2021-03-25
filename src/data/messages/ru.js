@@ -13,4 +13,5 @@ module.exports = {
   about: 'О нас',
   posts: 'Публикации',
   'news.seeMore': 'Больше новостей',
+  partners: 'Партнеры'
 };

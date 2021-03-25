@@ -121,8 +121,7 @@ class Topbar extends Component {
   };
 
   render() {
-    const { classes, langs } = this.props;
-
+    const { classes, langs, langKey } = this.props;
     return (
       <AppBar position="absolute" color="default" className={classes.appBar}>
         <Toolbar>
@@ -171,7 +170,7 @@ class Topbar extends Component {
                             to={
                               item.external
                                 ? null
-                                : item.pathname
+                                : `/${langKey}${item.pathname}`
                             }
                             button
                             key={item.label}
@@ -195,7 +194,7 @@ class Topbar extends Component {
                           to={
                             item.external
                               ? null
-                              : item.pathname
+                              : `/${langKey}${item.pathname}`
                           }
                           classes={{ root: classes.tabItem }}
                           label={<FormattedMessage id={item.label} />}

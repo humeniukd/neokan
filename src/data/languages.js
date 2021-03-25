@@ -1,4 +1,4 @@
 module.exports = {
   langs: ['ru', 'uk'],
-  defaultLangKey: 'ru'
+  defaultLangKey: 'ru',
 };

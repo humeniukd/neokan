@@ -1,13 +1,17 @@
 import React from 'react'
 import CssBaseline from '@material-ui/core/CssBaseline'
-import Topbar from '../components/Topbar'
+import Topbar from './components/Topbar'
 import { getCurrentLangKey, getLangs, getUrlForLang } from 'ptz-i18n';
 import { StaticQuery, graphql } from "gatsby"
 import { IntlProvider } from 'react-intl';
 import { ThemeProvider } from '@material-ui/styles'
-import theme from '../theme'
+import theme from './theme'
+import ru from './data/messages/ru'
+import uk from './data/messages/uk'
+import Partners from './components/Partners'
+const messages = { ru, uk }
 
-const Index = ({ children, location, i18nMessages }) => {
+const Layout = ({ children, location, partners= false }) => {
   return (
     <StaticQuery
       query={graphql`
@@ -26,18 +30,23 @@ const Index = ({ children, location, i18nMessages }) => {
         const url = location.pathname;
         const { langs, defaultLangKey } = data.site.siteMetadata.languages;
         const langKey = getCurrentLangKey(langs, defaultLangKey, url);
-        const homeLink = `/${langKey}/`.replace(`/${defaultLangKey}/`, '/');
-        const langsMenu = getLangs(langs, langKey, getUrlForLang(homeLink, url))
-          .map((item) => ({ ...item, link: item.link.replace(`/${defaultLangKey}/`, '/') }));
+        const homeLink = `/${langKey}/`
+        const langsMenu = getLangs(langs, langKey, getUrlForLang(homeLink, url));
+
         return (
           <IntlProvider
             locale={langKey}
-            messages={i18nMessages}
+            messages={messages[langKey]}
           >
             <ThemeProvider theme={theme}>
               <CssBaseline />
-              <Topbar langs={langsMenu} />
-              {children}
+              <Topbar langs={langsMenu} langKey={langKey}/>
+              <div style={{display: 'flex'}}>
+                <div>
+                  {children}
+                </div>
+                {partners && <Partners />}
+              </div>
             </ThemeProvider>
           </IntlProvider>
         )
@@ -46,4 +55,4 @@ const Index = ({ children, location, i18nMessages }) => {
   );
 };
 
-export default Index
+export default Layout

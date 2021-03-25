@@ -12,4 +12,5 @@ module.exports = {
   contacts: 'Контакти',
   about: 'Про нас',
   posts: 'Публікації',
+  partners: 'Партнери'
 };
